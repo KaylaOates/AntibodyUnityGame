@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-//=============================== INSTALL INPUT SYSTEM FOR THIS TO WORK ===============================//
 public class AntibodyController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
@@ -13,13 +11,15 @@ public class AntibodyController : MonoBehaviour
     Rigidbody2D myRigidbody;
 
     float minX = 200;
-    float maxX = 2360;
+    float maxX;
     float minY = 200;
-    float maxY = 1240;
+    float maxY;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        maxX = Screen.width - 200;
+        maxY = Screen.height - 200;
     }
 
     private void Update()
