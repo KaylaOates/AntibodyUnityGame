@@ -6,9 +6,10 @@ using UnityEngine.UIElements;
 
 public class AntibodyController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    public float moveSpeed = 5.0f;
     float vertical, horizontal;
     Rigidbody2D myRigidbody;
+    RectTransform myRectTransform;
 
     float minX;
     float maxX;
@@ -18,49 +19,44 @@ public class AntibodyController : MonoBehaviour
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        minX = - (Screen.width/2 - 200) ;
-        maxX = (Screen.width/2 - 200);
-        minY = - (Screen.height/2 - 200);
-        maxY = (Screen.height/2 - 200);
-
-        Debug.Log("minX: " + minX);
-        Debug.Log("maxX: " + maxX);
-        Debug.Log("minY: " + minY);
-        Debug.Log("maxY: " + maxY);
-
+        myRectTransform = GetComponent<RectTransform>();
+        minX = -(Screen.width / 2 - 500);
+        maxX = (Screen.width / 2 - 500);
+        minY = -(Screen.height / 2 - 300);
+        maxY = (Screen.height / 2 - 300);
     }
 
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        
-        myRigidbody.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
-        
-        Vector2 position = myRigidbody.position;
-        float clampedX = Mathf.Clamp(position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(position.y, minY, maxY);
-        if (position.x < minX || position.x > maxX || position.y < minY || position.y > maxY)
+
+        // Calculate the new velocity based on user input and moveSpeed
+        Vector2 newVelocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        myRigidbody.velocity = newVelocity;
+
+        // Get the current position of the GameObject
+        Vector2 currentPosition = myRigidbody.transform.position;
+        float currentX = currentPosition.x;
+        float currentY = currentPosition.y;
+        //Debug.Log("CurrentX: " + currentX + " CurrentY: " + currentY);
+
+        // Access posX and posY from the RectTransform component
+        float posX = myRectTransform.anchoredPosition.x;
+        float posY = myRectTransform.anchoredPosition.y;
+        //Debug.Log("posX: " + posX + " posY: " + posY);
+
+
+        if (posX < minX || posX > maxX || posY < minY || posY > maxY)
         {
-            Debug.Log("Out of bounds: " + position.x + ", " + position.y);
-            myRigidbody.position = new Vector2(clampedX, clampedY);
+            
+            posX = Mathf.Clamp(posX, minX, maxX);
+            posY = Mathf.Clamp(posY, minY, maxY);
+            myRectTransform.anchoredPosition = new Vector2(posX, posY);
+
+            Debug.Log("Out of bounds, new pos: " + posX + ", " + posY);
         }
 
-        /*Vector2 position = myRigidbody.position;
-        float clampedX = Mathf.Clamp(position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(position.y, minY, maxY);
 
-        // Check if the position is within the bounds
-        if (position.x >= minX && position.x <= maxX && position.y >= minY && position.y <= maxY)
-        {
-            // Rigidbody is within bounds, allow movement
-            myRigidbody.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
-        }
-        else
-        {
-            // Rigidbody is out of bounds, clamp its position
-            myRigidbody.position = new Vector2(clampedX, clampedY);
-            myRigidbody.velocity = Vector2.zero;
-        }*/
     }
 }
