@@ -303,8 +303,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210306896}
+  - component: {fileID: 210306897}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,6 +325,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &210306897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210306895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fb2eb44348b294c8497a5e34419acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red_blood_cellPrefab: {fileID: 5269116190289601881, guid: bbcdfb39b0df80d418791da1b93eb39f, type: 3}
+  virus_greenPrefab: {fileID: 6633084279295818989, guid: 8088401cee4a3ae46a3e5d3a58c76d16, type: 3}
+  red_blood_cellInterval: 3.5
+  virus_greenInterval: 10
 --- !u!1 &413371891
 GameObject:
   m_ObjectHideFlags: 0
