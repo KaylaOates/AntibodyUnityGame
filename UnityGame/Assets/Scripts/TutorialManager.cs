@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        player.jumpForce = 0;
+        //player.jumpForce = 0;
     }
     
     void Update()
@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                player.jumpForce = 8;
+              //  player.jumpForce = 8;
                 popUpIndex++;
             }
 
