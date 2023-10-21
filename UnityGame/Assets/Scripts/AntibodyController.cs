@@ -4,22 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-//=============================== INSTALL INPUT SYSTEM FOR THIS TO WORK ===============================//
 public class AntibodyController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    public float moveSpeed = 5.0f;
     float vertical, horizontal;
     Rigidbody2D myRigidbody;
+    RectTransform myRectTransform;
 
-    float minX = 200;
-    float maxX = 2360;
-    float minY = 200;
-    float maxY = 1240;
+    float minX;
+    float maxX;
+    float minY;
+    float maxY;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        myRectTransform = GetComponent<RectTransform>();
+        minX = -(Screen.width / 2 - 500);
+        maxX = (Screen.width / 2 - 500);
+        minY = -(Screen.height / 2 - 300);
+        maxY = (Screen.height / 2 - 300);
     }
 
     private void Update()
@@ -27,23 +31,32 @@ public class AntibodyController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        Vector2 position = myRigidbody.position;
+        // Calculate the new velocity based on user input and moveSpeed
+        Vector2 newVelocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        myRigidbody.velocity = newVelocity;
 
-        float clampedX = Mathf.Clamp(position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(position.y, minY, maxY);
+        // Get the current position of the GameObject
+        Vector2 currentPosition = myRigidbody.transform.position;
+        float currentX = currentPosition.x;
+        float currentY = currentPosition.y;
+        //Debug.Log("CurrentX: " + currentX + " CurrentY: " + currentY);
 
-        // Check if the position is within the bounds
-        if (position.x >= minX && position.x <= maxX && position.y >= minY && position.y <= maxY)
+        // Access posX and posY from the RectTransform component
+        float posX = myRectTransform.anchoredPosition.x;
+        float posY = myRectTransform.anchoredPosition.y;
+        //Debug.Log("posX: " + posX + " posY: " + posY);
+
+
+        if (posX < minX || posX > maxX || posY < minY || posY > maxY)
         {
-            // Rigidbody is within bounds, allow movement
-            myRigidbody.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+            
+            posX = Mathf.Clamp(posX, minX, maxX);
+            posY = Mathf.Clamp(posY, minY, maxY);
+            myRectTransform.anchoredPosition = new Vector2(posX, posY);
+
+            Debug.Log("Out of bounds, new pos: " + posX + ", " + posY);
         }
-        else
-        {
-            // Rigidbody is out of bounds, clamp its position
-            myRigidbody.position = new Vector2(clampedX, clampedY);
-            myRigidbody.velocity = Vector2.zero;
-        }
+
 
     }
 }
