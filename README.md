@@ -8,5 +8,15 @@ Inside the kingdom of your body, your immune system is the army that protects it
 - Instruction Scene: How to play: Use the arrow keys to move the main character around. Stop the viruses from passing!
 - Game Play: User controlles the Antibody through the bloodstream. As viruses appear, the antibody should be moved to stop it. Once stopped, a pop-up appears describing the virus which is then attacked by white a group of while blood cells and eventually destroyed.
 
+# Scripts
+- AntibodyController: allows the user to move the antibody with the arrow keys and stay within the bounds of the screen.
+- CollisionScript: Attached to each virus, when they collide with the antibody it triggers a pop-up and white blood cell attack.
+- CounterScript: Displays the game score, controlled by the number of collisions with viruses.
+- InfoPopUpClicked: Pops-up when a virus collides with the antibody. Different info box for each virus. Disappears when clicked
+- MoveLeft: The movement script for the viruses.
+- MovePrefab: Movement script for text boxes in the instructions scene.
+- StoryScroll: Scrolling movement for the story screen.
+- Spawener: Creates new viruses to pop-up on the screen.
+
 # Software Info
 Unity Version: 2020.3.26f1
