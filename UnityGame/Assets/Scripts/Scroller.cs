@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Scroller : MonoBehaviour
 {
-    [SerializeField] private RawImage _img;
-    [SerializeField] private float _x, _y;
+    //[SerializeField] private RawImage _img;
+    //[SerializeField] private float _x, _y;
 
 
     // Update is called once per frame
