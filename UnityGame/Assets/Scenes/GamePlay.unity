@@ -480,8 +480,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   red_blood_cellPrefab: {fileID: 5269116190289601881, guid: bbcdfb39b0df80d418791da1b93eb39f, type: 3}
   virus_greenPrefab: {fileID: 6633084279295818989, guid: 8088401cee4a3ae46a3e5d3a58c76d16, type: 3}
+  virus_bluePrefab: {fileID: 5223905425723217558, guid: d7be7f7799ad5704498c887c35f2dfdc, type: 3}
+  virus_yellowPrefab: {fileID: 1623044721742272191, guid: 197ff9472e18e5b4987e4bb8b69ec67a, type: 3}
   red_blood_cellInterval: 3.5
   virus_greenInterval: 10
+  virus_yellowInterval: 16
+  virus_blueInterval: 20
 --- !u!224 &1837426531 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8881693075296581454, guid: 3d18b54867069fd419dd34f45c14e259, type: 3}
