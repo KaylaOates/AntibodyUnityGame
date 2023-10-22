@@ -1,5 +1,9 @@
 # AntibodyUnityGame
 
+## Game created during the Dream Team Engineering 2024 Design-a-thon! 
+We were given 24 hours to complete a game that helps children understand medical related concepts.
+
+# Background Story
 Inside the kingdom of your body, your immune system is the army that protects it from invaders. Antibodies are like the scouts of the army. They are always on the lookout for invaders, such as bacteria and viruses. When an invader enters the body, the antibodies latch on to it and identify it. They then send a signal to the rest of the immune system to attack the invader. The immune system then sends out white blood cells to destroy the invader. Once the invader has been destroyed, the antibodies remember it. This means that if the same invader enters the body again, the antibodies will be able to recognize it and quickly send out white blood cells to destroy it. This is why people who have had diseases like chickenpox and measles usually don't get them again.
 
 # Scenes
