@@ -31,6 +31,8 @@ public class AntibodyController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
+
+
         // Calculate the new velocity based on user input and moveSpeed
         Vector2 newVelocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
         myRigidbody.velocity = newVelocity;
@@ -53,8 +55,6 @@ public class AntibodyController : MonoBehaviour
             posX = Mathf.Clamp(posX, minX, maxX);
             posY = Mathf.Clamp(posY, minY, maxY);
             myRectTransform.anchoredPosition = new Vector2(posX, posY);
-
-            Debug.Log("Out of bounds, new pos: " + posX + ", " + posY);
         }
 
 
