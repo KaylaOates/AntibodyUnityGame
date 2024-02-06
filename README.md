@@ -1,3 +1,4 @@
+![alt text](UnityGame/Assets/Images/gameplay_background.png)
 # Antibody Game
 
 Game created during the Dream Team Engineering 2024 Design-a-thon! We were given 24 hours to complete a game that helps children understand medical related concepts.
